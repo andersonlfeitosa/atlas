@@ -23,6 +23,9 @@ public class SvnItem {
 	
 	@Field
 	private Date updatedAt;
+	
+	@Field
+	private String type;
 
 	public String getFileName() {
 		return fileName;
@@ -76,5 +79,33 @@ public class SvnItem {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SvnItem [id=");
+		builder.append(id);
+		builder.append(", fileName=");
+		builder.append(fileName);
+		builder.append(", path=");
+		builder.append(path);
+		builder.append(", lastCommitter=");
+		builder.append(lastCommitter);
+		builder.append(", lastRevision=");
+		builder.append(lastRevision);
+		builder.append(", updatedAt=");
+		builder.append(updatedAt);
+		builder.append(", type=");
+		builder.append(type);
+		builder.append("]");
+		return builder.toString();
+	}
 }
