@@ -1,0 +1,35 @@
+## java
+*.class
+*.jar
+*.war
+*.ear
+
+## idea
+.idea/
+*.ipr
+*.iml
+*.iws
+out/
+
+## maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+## eclipse
+.metadata
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.externalToolBuilders/
+*.launch
