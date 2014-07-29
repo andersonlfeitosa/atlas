@@ -1,8 +1,11 @@
 package com.atlas.web.controller;
 
 import com.atlas.web.app.AtlasApplication;
+import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -14,8 +17,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+@RequestScoped
 @Produces("text/html")
 public abstract class AtlasController {
+    @Inject
+    private AtlasApplication application;
+
     @Context
     protected HttpServletRequest request;
 
@@ -29,7 +36,7 @@ public abstract class AtlasController {
 
     public String renderView(String viewName) {
         WebContext ctx = new WebContext(request, response, context, request.getLocale(), viewModel);
-        return AtlasApplication.getTemplateEngine().process(viewName, ctx);
+        return application.getTemplateEngine().process(viewName, ctx);
     }
 
     public void redirectToView(String viewName) {

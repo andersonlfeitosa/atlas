@@ -1,16 +1,19 @@
 package com.atlas.web.app;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import javax.enterprise.context.ApplicationScoped;
 
-@ApplicationPath("/")
-public class AtlasApplication extends Application {
-    private static TemplateEngine templateEngine;
+@ApplicationScoped
+public class AtlasApplication {
+    private static final Logger logger = LoggerFactory.getLogger(AtlasApplication.class);
 
-    private static TemplateEngine initializeTemplateEngine() {
+    private TemplateEngine templateEngine;
+
+    private TemplateEngine initializeTemplateEngine() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
         templateResolver.setTemplateMode("HTML5");
         templateResolver.setPrefix("/WEB-INF/templates/");
@@ -23,11 +26,12 @@ public class AtlasApplication extends Application {
         return templateEngine;
     }
 
-    public AtlasApplication() {
+    void init() {
+        logger.info("Atlas application starting...");
         initializeTemplateEngine();
     }
 
-    public static TemplateEngine getTemplateEngine() {
+    public TemplateEngine getTemplateEngine() {
         if (templateEngine == null) {
             templateEngine = initializeTemplateEngine();
         }

@@ -1,0 +1,12 @@
+body {
+    /*padding-top: 60px;*/
+    background-color: #eee;
+}
+
+.search-form {
+    max-width: 400px;
+}
+
+.search-form #search-term {
+    width: 500px;
+}
